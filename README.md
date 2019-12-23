@@ -2,9 +2,9 @@
 description: 'GCI Task : Getting started with STL in C++'
 ---
 
-# 🦄Introduce to the STL
+# Introduce to the STL
 
-## 簡介
+### 簡介
 
 標準模板庫（Standard Template Library），是一個C++ 軟體庫，也是C++標準程式庫的一部分。 其中包含3個元件，分別為演算法、容器、疊代器。
 

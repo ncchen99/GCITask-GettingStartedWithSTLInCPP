@@ -2,7 +2,7 @@
 description: 參考資料
 ---
 
-# 💎Reference
+# Reference
 
 {% embed url="https://larry850806.github.io/2016/06/06/STL2/" %}
 
