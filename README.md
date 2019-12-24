@@ -1,5 +1,5 @@
 ---
-description: 'GCI Task : Getting started with STL in C++       2019/10/24'
+description: 'GCI Task : Getting started with STL in C++       2019/12/24'
 ---
 
 # 🦄Introduce to the STL
