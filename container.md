@@ -99,6 +99,8 @@ output :
 
 Set 就是集合內部資料結構為一顆紅黑樹 \(red-black tree\)，裡面的元素都不會重覆，而且都會由小排到大，不過數量多時效率還是會糟的 !
 
+![&#x5F15;&#x7528;&#x81EA;:http://blog.daum.net/\_blog/BlogTypeView.do?blogid=0Nu8o&amp;articleno=82&amp;categoryId=7&amp;regdt=20091210122155](.gitbook/assets/image%20%284%29.png)
+
 #### 基本功能有: <a id="&#x57FA;&#x672C;&#x529F;&#x80FD;&#x6709;-2"></a>
 
 * insert\(\) : 把一個數字放進集合
@@ -145,6 +147,62 @@ Map 的 key-value 對應主要用於資料一對一映射 \(one-to-one\) 的情�
 * 以模板（泛型）方式實現，可以儲存任意類型的變數，包括使用者自定義的資料型態 。
 
 ![&#x5F15;&#x7528;&#x81EA; : https://mropengate.blogspot.com/2015/12/cc-map-stl.html](.gitbook/assets/image%20%283%29.png)
+
+
+
+**1. 宣告**
+
+```cpp
+map<string, string> mapStudent;
+```
+
+**2. 插入 insert\(\)**
+
+```cpp
+// 用 insert 函數插入 pair
+    mapStudent.insert(pair<string, string>("r000", "student_zero"));
+
+//用 "array" 方式插入
+    mapStudent["r123"] = "student_first";
+    mapStudent["r456"] = "student_second";
+```
+
+**3. 尋找 find\(\)**
+
+  
+出現時，它返回資料所在位置，如果沒有，返回 iter 與 end\(\) 函數的返回值相同。
+
+```cpp
+iter = mapStudent.find("r123");
+
+if(iter != mapStudent.end())
+       cout<<"Find, the value is"<<iter->second<<endl;
+else
+   cout<<"Do not Find"<<endl;
+
+```
+
+![&#x5F15;&#x7528;&#x81EA;:https://mropengate.blogspot.com/2015/12/cc-map-stl.html](https://3.bp.blogspot.com/-p2D7ql_iuFE/VmU7pe7zQrI/AAAAAAAA_Ks/WC3G3ADrKBE/s1600/27.7.png)
+
+**4. 刪除與清空**
+
+  
+清空 map 中的資料可以用 clear\(\) 函數，判定 map 中是否有資料用 empty\(\) 函數，如果回傳 true 則 map 為空，而資料的刪除用 erase\(\) 函數，它有三種 overload 的用法：  
+  
+
+
+```cpp
+//迭代器刪除
+iter = mapStudent.find("r123");
+mapStudent.erase(iter);
+
+//用關鍵字刪除
+int n = mapStudent.erase("r123");//如果刪除了會返回1，否則返回0
+
+//用迭代器範圍刪除 : 把整個map清空
+mapStudent.erase(mapStudent.begin(), mapStudent.end());
+//等同於mapStudent.clear()
+```
 
 {% code title="ex4.cpp" %}
 ```cpp
