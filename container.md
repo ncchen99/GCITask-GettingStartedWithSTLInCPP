@@ -99,7 +99,7 @@ output :
 
 Set 就是集合內部資料結構為一顆紅黑樹 \(red-black tree\)，裡面的元素都不會重覆，而且都會由小排到大，不過數量多時效率還是會糟的 !
 
-![&#x5F15;&#x7528;&#x81EA;:http://blog.daum.net/\_blog/BlogTypeView.do?blogid=0Nu8o&amp;articleno=82&amp;categoryId=7&amp;regdt=20091210122155](.gitbook/assets/image%20%284%29.png)
+![&#x5F15;&#x7528;&#x81EA;:http://blog.daum.net/\_blog/BlogTypeView.do?blogid=0Nu8o&amp;articleno=82&amp;categoryId=7&amp;regdt=20091210122155](.gitbook/assets/image%20%281%29.png)
 
 #### 基本功能有: <a id="&#x57FA;&#x672C;&#x529F;&#x80FD;&#x6709;-2"></a>
 
@@ -146,7 +146,7 @@ Map 的 key-value 對應主要用於資料一對一映射 \(one-to-one\) 的情�
 * 可以修改 value 值、不能修改 key 值。
 * 以模板（泛型）方式實現，可以儲存任意類型的變數，包括使用者自定義的資料型態 。
 
-![&#x5F15;&#x7528;&#x81EA; : https://mropengate.blogspot.com/2015/12/cc-map-stl.html](.gitbook/assets/image%20%283%29.png)
+![&#x5F15;&#x7528;&#x81EA; : https://mropengate.blogspot.com/2015/12/cc-map-stl.html](.gitbook/assets/image%20%287%29.png)
 
 
 
@@ -160,16 +160,15 @@ map<string, string> mapStudent;
 
 ```cpp
 // 用 insert 函數插入 pair
-    mapStudent.insert(pair<string, string>("r000", "student_zero"));
+mapStudent.insert(pair<string, string>("r000", "student_zero"));
 
 //用 "array" 方式插入
-    mapStudent["r123"] = "student_first";
-    mapStudent["r456"] = "student_second";
+mapStudent["r123"] = "student_first";
+mapStudent["r456"] = "student_second";
 ```
 
 **3. 尋找 find\(\)**
 
-  
 出現時，它返回資料所在位置，如果沒有，返回 iter 與 end\(\) 函數的返回值相同。
 
 ```cpp
@@ -179,17 +178,13 @@ if(iter != mapStudent.end())
        cout<<"Find, the value is"<<iter->second<<endl;
 else
    cout<<"Do not Find"<<endl;
-
 ```
 
 ![&#x5F15;&#x7528;&#x81EA;:https://mropengate.blogspot.com/2015/12/cc-map-stl.html](https://3.bp.blogspot.com/-p2D7ql_iuFE/VmU7pe7zQrI/AAAAAAAA_Ks/WC3G3ADrKBE/s1600/27.7.png)
 
 **4. 刪除與清空**
 
-  
-清空 map 中的資料可以用 clear\(\) 函數，判定 map 中是否有資料用 empty\(\) 函數，如果回傳 true 則 map 為空，而資料的刪除用 erase\(\) 函數，它有三種 overload 的用法：  
-  
-
+清空 map 中的資料可以用 clear\(\) 函數，判定 map 中是否有資料用 empty\(\) 函數，如果回傳 true 則 map 為空，而資料的刪除用 erase\(\) 函數，它有三種 overload 的用法：
 
 ```cpp
 //迭代器刪除
@@ -203,6 +198,8 @@ int n = mapStudent.erase("r123");//如果刪除了會返回1，否則返回0
 mapStudent.erase(mapStudent.begin(), mapStudent.end());
 //等同於mapStudent.clear()
 ```
+
+#### 完整範例 :
 
 {% code title="ex4.cpp" %}
 ```cpp
@@ -243,6 +240,262 @@ int main(){
        cout<<"Do not Find"<<endl;
 
     return 0;
+}
+```
+{% endcode %}
+
+## **list**
+
+ **list** 是[C++標準程式庫](https://zh.wikipedia.org/wiki/C%2B%2B%E6%A8%99%E6%BA%96%E7%A8%8B%E5%BC%8F%E5%BA%AB)中的一個[類](https://zh.wikipedia.org/wiki/%E9%A1%9E)，可以簡單視之為雙向[連結串列](https://zh.wikipedia.org/wiki/%E9%80%A3%E7%B5%90%E4%B8%B2%E5%88%97)，以線性列的方式管理物件集合。list 的特色是在集合的任何位置增加或刪除元素都很快，但是不支持隨機存取。
+
+#### 用法有 :
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:left">
+        <p></p>
+        <p>list.size()</p>
+      </th>
+      <th style="text-align:left">
+        <p></p>
+        <p>&#x8A08;&#x7B97;&#x9577;&#x5EA6;</p>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:left">
+        <p></p>
+        <p>list.front()</p>
+      </td>
+      <td style="text-align:left">
+        <p></p>
+        <p>&#x53D6;&#x5F97;&#x958B;&#x982D;&#x5143;&#x7D20;</p>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">
+        <p></p>
+        <p>list.back()</p>
+      </td>
+      <td style="text-align:left">
+        <p></p>
+        <p>&#x53D6;&#x5F97;&#x7D50;&#x5C3E;&#x5143;&#x7D20;</p>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">
+        <p></p>
+        <p>list.begin()</p>
+      </td>
+      <td style="text-align:left">
+        <p></p>
+        <p>&#x53D6;&#x5F97;&#x958B;&#x982D;&#x5143;&#x7D20;&#x4E4B;&#x62BD;&#x8C61;&#x6307;&#x6A19;</p>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">
+        <p></p>
+        <p>list.end()</p>
+      </td>
+      <td style="text-align:left">
+        <p></p>
+        <p>&#x53D6;&#x5F97;&#x7D50;&#x5C3E;&#x5143;&#x7D20;&#x4E4B;&#x62BD;&#x8C61;&#x6307;&#x6A19;</p>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">
+        <p></p>
+        <p>list.push_front()</p>
+      </td>
+      <td style="text-align:left">
+        <p></p>
+        <p>&#x589E;&#x52A0;&#x4E00;&#x500B;&#x65B0;&#x7684;&#x5143;&#x7D20;&#x5728;
+          list &#x7684;&#x524D;&#x7AEF;</p>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">
+        <p></p>
+        <p>list.pop_front()</p>
+      </td>
+      <td style="text-align:left">
+        <p></p>
+        <p>&#x522A;&#x9664; list &#x7684;&#x7B2C;&#x4E00;&#x500B;&#x5143;&#x7D20;</p>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">
+        <p></p>
+        <p>list.push_back()</p>
+      </td>
+      <td style="text-align:left">
+        <p></p>
+        <p>&#x589E;&#x52A0;&#x4E00;&#x500B;&#x65B0;&#x7684;&#x5143;&#x7D20;&#x5728;
+          list &#x7684;&#x5C3E;&#x7AEF;</p>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">
+        <p></p>
+        <p>list.pop_back()</p>
+      </td>
+      <td style="text-align:left">
+        <p></p>
+        <p>&#x522A;&#x9664; list &#x7684;&#x6700;&#x672B;&#x500B;&#x5143;&#x7D20;</p>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">
+        <p></p>
+        <p>list.insert()</p>
+      </td>
+      <td style="text-align:left">
+        <p></p>
+        <p>&#x63D2;&#x5165;&#x4E00;&#x500B;&#x6216;&#x591A;&#x500B;&#x5143;&#x7D20;&#x81F3;
+          list&#x5167;&#x7684;&#x4EFB;&#x610F;&#x4F4D;&#x7F6E;</p>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">
+        <p></p>
+        <p>list.erase()</p>
+      </td>
+      <td style="text-align:left">
+        <p></p>
+        <p>&#x522A;&#x9664; list&#x4E2D;&#x4E00;&#x500B;&#x6216;&#x591A;&#x500B;&#x5143;&#x7D20;</p>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">
+        <p></p>
+        <p>list.reverse()</p>
+      </td>
+      <td style="text-align:left">
+        <p></p>
+        <p>&#x8CC7;&#x6599;&#x53CD;&#x7F6E;</p>
+      </td>
+    </tr>
+  </tbody>
+</table>{% code title="ex5.cpp" %}
+```cpp
+#include <iostream> 
+#include <list> 
+#include <iterator> 
+using namespace std; 
+
+//function for printing the elements in a list 
+void showlist(list <int> g) 
+{ 
+	list <int> :: iterator it; 
+	for(it = g.begin(); it != g.end(); ++it) 
+		cout << '\t' << *it; 
+	cout << '\n'; 
+} 
+
+int main() 
+{ 
+
+	list <int> gqlist1, gqlist2; 
+
+
+	for (int i = 0; i < 10; ++i) 
+	{ 
+		gqlist1.push_back(i * 2); 
+		gqlist2.push_front(i * 3); 
+	} 
+	cout << "\nList 1 (gqlist1) is : "; 
+	showlist(gqlist1); 
+
+	cout << "\nList 2 (gqlist2) is : "; 
+	showlist(gqlist2); 
+
+	cout << "\ngqlist1.front() : " << gqlist1.front(); 
+	cout << "\ngqlist1.back() : " << gqlist1.back(); 
+
+	cout << "\ngqlist1.pop_front() : "; 
+	gqlist1.pop_front(); 
+	showlist(gqlist1); 
+
+	cout << "\ngqlist2.pop_back() : "; 
+	gqlist2.pop_back(); 
+	showlist(gqlist2); 
+
+	cout << "\ngqlist1.reverse() : "; 
+	gqlist1.reverse(); 
+	showlist(gqlist1); 
+
+	cout << "\ngqlist2.sort(): "; 
+	gqlist2.sort(); 
+	showlist(gqlist2); 
+
+	return 0; 
+} 
+```
+{% endcode %}
+
+## queue
+
+Queue 就像是排隊買東西  
+只能往尾巴排，然後從頭出來，但是需注意只能操作頭尾。
+
+![&#x5F15;&#x7528;&#x81EA; : https://pixabay.com/vectors/bank-queue-person-standing-atm-3527570/](.gitbook/assets/image%20%282%29.png)
+
+#### 基本功能有: <a id="&#x57FA;&#x672C;&#x529F;&#x80FD;&#x6709;"></a>
+
+* push\(\) : 把一個值加到尾巴
+* pop\(\) : 把第一個值移除掉
+* back\(\) : 得到尾巴的值
+* front\(\) : 得到頭的值
+
+{% code title="ex7.cpp" %}
+```cpp
+#include <iostream>
+#include <queue>
+using namespace std;
+int main(){
+    queue<int> q;       // 一個空的 queue
+    for(int i=0 ; i<5 ; i++){
+        q.push(i * 10);
+    }                   // [0, 10, 20, 30, 40]
+
+    while(q.size() != 0){
+        cout << q.front() << endl;
+        q.pop();
+    }                   // 依序輸出 0 10 20 30 40
+}
+```
+{% endcode %}
+
+##  stack
+
+Stack 就是一疊盤子，只能拿走最上面的，或是繼續往上疊。
+
+![&#x5F15;&#x7528;&#x81EA; : https://www.flickr.com/photos/eraphernalia\_vintage/3033502393](.gitbook/assets/image%20%288%29.png)
+
+#### 基本功能有: <a id="&#x57FA;&#x672C;&#x529F;&#x80FD;&#x6709;-1"></a>
+
+* top\(\) : 得到最上面的值
+* push\(\) : 再拿一個盤子往上疊
+* pop\(\) : 拿掉最上面的盤子
+
+{% code title="ex8.cpp" %}
+```cpp
+#include <iostream>
+#include <stack>
+using namespace std;
+int main(){
+    stack<int> s;
+    
+    s.push(10);     //  | 30 |
+    s.push(20);     //  | 20 |   疊三個盤子
+    s.push(30);     //  |_10_|   10 在最下面
+
+    for(int i=0 ; i<s.size() ; i++){    // s.size() = 3
+        cout << s.top() << endl;
+        s.pop();
+    }                                   // 輸出 30, 20, 10
 }
 ```
 {% endcode %}

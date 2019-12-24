@@ -16,6 +16,8 @@ description: 參考資料
 
 {% embed url="https://mropengate.blogspot.com/2015/12/cc-map-stl.html" %}
 
+{% embed url="https://www.geeksforgeeks.org/list-cpp-stl/" %}
+
 
 
 {% embed url="https://www.csie.ntu.edu.tw/~r95116/CA200/slide/C6\_STL.pdf" %}
