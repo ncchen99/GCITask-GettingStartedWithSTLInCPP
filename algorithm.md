@@ -267,7 +267,7 @@ int main( )
 ```
 {% endcode %}
 
-transform 
+## transform 
 
 transform\(first, last, output, f\) 
 
